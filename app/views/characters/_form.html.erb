@@ -19,7 +19,19 @@
     <%= f.label :movie_id %><br />
     <%= f.collection_select :movie_id, Movie.all, :id, :title %>
   </div>
+  <div class="field">
+    <%= f.label :actor_id %><br />
+    <%= f.collection_select :actor_id, Actor.all, :id, :name %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+
+
+
+
+
+

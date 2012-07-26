@@ -9,6 +9,7 @@
 Director.destroy_all
 Movie.destroy_all
 Character.destroy_all
+Actor.destroy_all
 
 directors = [
   { name: "Francis Ford Coppola", dob: "04/07/1939" },
@@ -31,11 +32,22 @@ movies.each do |movie|
   Movie.create movie
 end
 
+actors = [
+  { name: "Christian Bale", dob: "01/30/1974" },
+  { name: "Al Pacino", dob: "04/25/1940" },
+  { name: "Tim Robbins", dob: "10/16/1958" },
+  { name: "Morgan Freeman", dob: "06/01/1937" }
+  ]
+  
+actors.each do |actor|
+  Actor.create name: actor[:name], dob: (Date.strptime actor[:dob], '%m/%d/%Y')
+end
+
 characters = [
-  { name: "Bruce Wayne", movie_id: Movie.find_by_title("The Dark Knight").id },
-  { name: "Michael Corleone", movie_id: Movie.find_by_title("The Godfather").id },
-  { name: "Andy Dufresne", movie_id: Movie.find_by_title("The Shawshank Redemption").id },
-  { name: "Red Redding", movie_id: Movie.find_by_title("The Shawshank Redemption").id }
+  { actor_id: Actor.find_by_name("Christian Bale").id, name: "Bruce Wayne", movie_id: Movie.find_by_title("The Dark Knight").id },
+  { actor_id: Actor.find_by_name("Al Pacino").id, name: "Michael Corleone", movie_id: Movie.find_by_title("The Godfather").id },
+  { actor_id: Actor.find_by_name("Tim Robbins").id, name: "Andy Dufresne", movie_id: Movie.find_by_title("The Shawshank Redemption").id },
+  { actor_id: Actor.find_by_name("Morgan Freeman").id, name: "Red Redding", movie_id: Movie.find_by_title("The Shawshank Redemption").id }
   ]
   
 characters.each do |character|
