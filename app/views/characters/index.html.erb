@@ -4,6 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Movie</th>
+    <th>Actor</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +13,20 @@
 <% @characters.each do |character| %>
   <tr>
     <td><%= character.name %></td>
-    <td><%= character.movie.title %></td>
+    <td>
+    <% if character.movie.present? %>
+      <%= character.movie.title %>
+    <% else %>
+      No movie assigned.
+    <% end %>
+    </td>
+    <td>
+    <% if character.actor.present? %>
+      <%= character.actor.name %>
+    <% else %>
+      No actor assigned.
+    <% end %>
+    </td>
     <td><%= link_to 'Show', character %></td>
     <td><%= link_to 'Edit', edit_character_path(character) %></td>
     <td><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>

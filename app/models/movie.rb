@@ -3,8 +3,17 @@ class Movie < ActiveRecord::Base
   
   belongs_to :director
   has_many :characters
+  has_many :actors, :through => :characters
   
   # def director
   #   return Director.find_by_id(self.director_id)
+  # end
+  
+  # def actors
+  #   result = []
+  #   self.characters.each do |character|
+  #     result << character.actor
+  #   end
+  #   return result
   # end
 end

@@ -7,12 +7,16 @@
 
 <p>
   <b>Movie:</b>
-  <%= @character.movie.title %>
+  <% if @character.movie.present? %>
+    <%= @character.movie.title %>
+  <% end %>
 </p>
 
 <p>
   <b>Actor:</b>
-  <%= @character.actor.name %>
+  <% if @character.actor.present? %>
+    <%= @character.actor.name %>
+  <% end %>
 </p>
 
 
