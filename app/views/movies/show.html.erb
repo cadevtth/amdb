@@ -24,7 +24,7 @@
   <b>Cast:</b>
   <ul>
   <% @movie.actors.each do |actor| %>
-    <li><%= actor.name %></li>
+    <li><%= actor.name %> plays <%= @movie.characters.find_by_actor_id(actor.id).name %></li>
   <% end %>
   </ul>
 </p>

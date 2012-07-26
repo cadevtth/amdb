@@ -16,4 +16,6 @@ class Movie < ActiveRecord::Base
   #   end
   #   return result
   # end
+  
+  # Challenge: rewrite this using the .map method
 end
