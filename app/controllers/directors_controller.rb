@@ -14,7 +14,7 @@ class DirectorsController < ApplicationController
   # GET /directors/1.json
   def show
     @director = Director.find(params[:id])
-    @movies = Movie.find_all_by_director_id(@director.id)
+    @movies = @director.movies
     
     respond_to do |format|
       format.html # show.html.erb

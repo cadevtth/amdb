@@ -15,16 +15,16 @@ directors = [
   { name: "Frank Darabont", dob: "01/29/1959" }
   ]
   
-movies = [
-  { title: "The Godfather", year: "1972", director: "Francis Ford Coppola" },
-  { title: "The Godfather: Part II", year: "1974", director: "Francis Ford Coppola" },
-  { title: "The Shawshank Redemption", year: "1994", director: "Frank Darabont" },
-  { title: "The Dark Knight", year: "1972", director: "Christopher Nolan" }
-  ]
-  
 directors.each do |director|
   Director.create name: director[:name], dob: (Date.strptime director[:dob], '%m/%d/%Y')
-end  
+end
+
+movies = [
+  { title: "The Godfather", year: "1972", director: Director.find_by_name("Francis Ford Coppola") },
+  { title: "The Godfather: Part II", year: "1974", director: Director.find_by_name("Francis Ford Coppola") },
+  { title: "The Shawshank Redemption", year: "1994", director: Director.find_by_name("Frank Darabont") },
+  { title: "The Dark Knight", year: "1972", director: Director.find_by_name("Christopher Nolan") }
+  ]
 
 movies.each do |movie|
   Movie.create movie

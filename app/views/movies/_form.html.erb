@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :director_id %><br />
-    <%= f.number_field :director_id %>
+    <%= f.collection_select :director_id, Director.all, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :genre %><br />
@@ -31,3 +31,11 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+
+
+
+
+
+
+

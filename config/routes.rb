@@ -1,4 +1,6 @@
 Amdb::Application.routes.draw do
+  root :to => 'Movies#index'
+  
   resources :movies
 
   resources :directors
