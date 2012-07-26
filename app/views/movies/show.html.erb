@@ -20,5 +20,27 @@
   <%= @movie.genre %>
 </p>
 
+<p>
+  <b>Characters:</b>
+  <ul>
+  <% @movie.characters.each do |character| %>
+    <li><%= character.name %></li>
+  <% end %>
+  </ul>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>

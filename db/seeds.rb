@@ -8,6 +8,7 @@
 
 Director.destroy_all
 Movie.destroy_all
+Character.destroy_all
 
 directors = [
   { name: "Francis Ford Coppola", dob: "04/07/1939" },
@@ -18,14 +19,25 @@ directors = [
 directors.each do |director|
   Director.create name: director[:name], dob: (Date.strptime director[:dob], '%m/%d/%Y')
 end
-
+    
 movies = [
-  { title: "The Godfather", year: "1972", director: Director.find_by_name("Francis Ford Coppola") },
-  { title: "The Godfather: Part II", year: "1974", director: Director.find_by_name("Francis Ford Coppola") },
-  { title: "The Shawshank Redemption", year: "1994", director: Director.find_by_name("Frank Darabont") },
-  { title: "The Dark Knight", year: "1972", director: Director.find_by_name("Christopher Nolan") }
+  { title: "The Godfather", year: "1972", director_id: Director.find_by_name("Francis Ford Coppola").id },
+  { title: "The Godfather: Part II", year: "1974", director_id: Director.find_by_name("Francis Ford Coppola").id },
+  { title: "The Shawshank Redemption", year: "1994", director_id: Director.find_by_name("Frank Darabont").id },
+  { title: "The Dark Knight", year: "1972", director_id: Director.find_by_name("Christopher Nolan").id }
   ]
-
+  
 movies.each do |movie|
   Movie.create movie
+end
+
+characters = [
+  { name: "Bruce Wayne", movie_id: Movie.find_by_title("The Dark Knight").id },
+  { name: "Michael Corleone", movie_id: Movie.find_by_title("The Godfather").id },
+  { name: "Andy Dufresne", movie_id: Movie.find_by_title("The Shawshank Redemption").id },
+  { name: "Red Redding", movie_id: Movie.find_by_title("The Shawshank Redemption").id }
+  ]
+  
+characters.each do |character|
+  Character.create character
 end

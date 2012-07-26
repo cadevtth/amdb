@@ -5,5 +5,5 @@ class Director < ActiveRecord::Base
     
   # def movies
   #   return Movie.find_all_by_director_id(self.id)
-  # end  
+  # end
 end
