@@ -5,6 +5,16 @@ class Movie < ActiveRecord::Base
   has_many :characters
   has_many :actors, :through => :characters
   
+  validates_presence_of :title
+  
+  validates :title, :presence => true
+  
+  validates_presence_of :year
+  
+  def average_rating
+    
+  end
+  
   # def director
   #   return Director.find_by_id(self.director_id)
   # end
