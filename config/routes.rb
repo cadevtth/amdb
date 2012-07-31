@@ -1,4 +1,6 @@
 Amdb::Application.routes.draw do
+  resources :ratings
+
   resources :actors
 
   resources :characters

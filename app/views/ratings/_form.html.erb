@@ -1,0 +1,29 @@
+<%= form_for(@rating) do |f| %>
+  <% if @rating.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
+
+      <ul>
+      <% @rating.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :stars %><br />
+    <%= f.number_field :stars %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.collection_select :user_id, User.all, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :movie_id %><br />
+    <%= f.collection_select :movie_id, Movie.all, :id, :title %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
