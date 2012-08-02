@@ -2,7 +2,19 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.order('title asc')
+    # if params[:sort_by]
+    #   dir = params[:sort_by]
+    # else
+    #   dir = "asc"
+    # end
+    dir = params[:sort_by] || "asc" 
+    @movies = Movie.order("title #{dir}")
+    
+    # if params[:sort_by]
+    #   @movies = Movie.order("title #{params[:sort_by]}")
+    # else
+    #   @movies = Movie.order('title asc')
+    # end
 
     respond_to do |format|
       format.html # index.html.erb
