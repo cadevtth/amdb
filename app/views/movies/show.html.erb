@@ -5,6 +5,12 @@
   <%= @movie.title %>
 </p>
 
+<%= link_to "Rate This Movie!", new_rating_url(:movie_id => @movie.id) %>
+
+<p>
+  <b>Average Rating:</b>
+  <%= @movie.ratings.average(:stars) %>
+</p>
 <p>
   <b>Year:</b>
   <%= @movie.year %>

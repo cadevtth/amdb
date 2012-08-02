@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.all
+    @movies = Movie.order('title asc')
 
     respond_to do |format|
       format.html # index.html.erb

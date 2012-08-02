@@ -4,15 +4,16 @@ class Movie < ActiveRecord::Base
   belongs_to :director
   has_many :characters
   has_many :actors, :through => :characters
+  has_many :ratings
   
   validates_presence_of :title
   
-  validates :title, :presence => true
-  
   validates_presence_of :year
   
+  # CHALLENGE: Implement this method to return
+  # the average rating for this movie.
   def average_rating
-    
+    self.ratings.average(:stars)
   end
   
   # def director

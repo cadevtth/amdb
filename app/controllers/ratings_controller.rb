@@ -25,7 +25,8 @@ class RatingsController < ApplicationController
   # GET /ratings/new.json
   def new
     @rating = Rating.new
-
+    @rating.movie_id = params[:movie_id]
+        
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @rating }
